@@ -129,7 +129,7 @@ defmodule Nats.Client do
     do: GenServer.call(self, {:cmd,
                               Nats.Parser.encode({:pub, subject,
                                                   reply, what}),
-                              false})
+                              true})
   def sub(self, who, subject, queue \\ nil),
     do: GenServer.call(self, {:sub, who, subject, queue})
   def unsub(self, ref, afterReceiving \\ nil),
