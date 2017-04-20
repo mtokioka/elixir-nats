@@ -65,7 +65,7 @@ defmodule Nats.Client do
     super(reason, state)
   end
   defp send_cmd(state, cmd),
-    do: send_cmd(state, Nats.Parser.encode(cmd), false, nil)
+    do: send_cmd(state, Nats.Parser.encode(cmd), true, nil)
   defp send_cmd(state, cmd, flush?, from),
     do: GenServer.cast(state.conn,
                        {:write_flush, cmd, flush?, from})
